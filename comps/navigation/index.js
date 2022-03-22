@@ -1,5 +1,7 @@
 import styled from "styled-components"
 import { useRouter } from "next/router"
+import { bgcolor,textcolor } from '../variables'
+import { useTheme } from '../../utils/provider'
 
 const Cont = styled.div`
     display: flex;
@@ -7,7 +9,7 @@ const Cont = styled.div`
     justify-content: space-between;
     width: 100%;
     height: 340px;
-    background-color: #66BAE9;
+    background-color:${props=>props.background};
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
     -khtml-user-select: none; /* Konqueror HTML */
@@ -24,8 +26,8 @@ const NavCont = styled.div`
 
 const NavNames = styled.li`
     padding: 30px;
-    background-color: #66BAE9;
-    color: #fff;
+    background-color:${props=>props.background};
+    color:${props=>props.color};
     font-size: 20px;
     list-style: none;
     cursor: pointer;
@@ -33,7 +35,7 @@ const NavNames = styled.li`
 
 const IntroText = styled.div`
     display: flex;
-    color: #fff;
+    color:${props=>props.color};
     font-size: 36px;
     font-weight: 500;
     padding-left:50px;
@@ -44,16 +46,16 @@ const Navigation = ({
     index = "/",
     about = "/about",
 }) =>{
-
+    const {theme} = useTheme()
     const r = useRouter()
     return (
-        <Cont>
+        <Cont background={bgcolor[theme]}>
             <div></div>
             <NavCont>
-                <NavNames onClick={()=>r.push(index)}>Home</NavNames>
-                <NavNames onClick={()=>r.push(about)}>About</NavNames>
+                <NavNames onClick={()=>r.push(index)} background={bgcolor[theme]} color={textcolor[theme]}>Home</NavNames>
+                <NavNames onClick={()=>r.push(about)} background={bgcolor[theme]} color={textcolor[theme]}>About</NavNames>
             </NavCont>
-            <IntroText>{pageName}</IntroText>
+            <IntroText color={textcolor[theme]}>{pageName}</IntroText>
         </Cont>
     )
 }

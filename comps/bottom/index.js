@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import { useTheme } from "../../utils/provider";
+import { bgcolor,textcolor } from '../variables'
 
 const Cont = styled.div`
   display: flex;
@@ -8,7 +10,7 @@ const Cont = styled.div`
   align-items:center;
   width: 100%;
   min-height:30vh;
-  background:#60BAE0;
+  background:${props=>props.background};
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
@@ -48,6 +50,7 @@ const Term = styled.div`
   white-space:nowrap;
   font-size:22px;
   font-weight: 400;
+  color:${props=>props.color};
   :hover {
 		color: #fff;
 	}
@@ -66,6 +69,7 @@ const Policy = styled.div`
   white-space:nowrap;
   font-size:22px;
   font-weight: 400;
+  color:${props=>props.color};
   :hover {
 		color: #fff;
 	}
@@ -88,6 +92,7 @@ const Des = styled.p`
   font-size:26px;
   font-weight: 400;
   margin-right: 20px;
+  color:${props=>props.color};
 `
 
 const Input = styled.input`
@@ -109,7 +114,9 @@ const Button = styled.div`
 
 export default function BottomBar() {
   const r = useRouter()
-  return <Cont>
+  const {theme} = useTheme();
+  
+  return <Cont background={bgcolor[theme]}>
     <MainCont>
 
       <div>
@@ -119,14 +126,14 @@ export default function BottomBar() {
       </div>
       <MidCont>
         <InputCont>
-          <Des>Email:</Des>
+          <Des color={textcolor[theme]}>Email:</Des>
           <Input type={'email'} placeholder='Email' />
           <Button>Send</Button>
         </InputCont>
       <PolicyCont>
-        <Term onClick={() => r.push("/term")}>Terms of Use</Term>
+        <Term onClick={() => r.push("/term")} color={textcolor[theme]}>Terms of Use</Term>
         <Break></Break>
-        <Policy onClick={() => r.push("/policy")}>Privacy Policy</Policy>
+        <Policy onClick={() => r.push("/policy")} color={textcolor[theme]}>Privacy Policy</Policy>
       </PolicyCont>
       </MidCont>
     </MainCont>
