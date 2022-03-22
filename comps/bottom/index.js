@@ -120,9 +120,9 @@ export default function BottomBar() {
     <MainCont>
 
       <div>
-        <Icons src='/Facebook_icon.png' w={50} />
-        <Icons src='/LinkedIn_icon_circle.svg.png' w={50} />
-        <Icons src='/Twitter-logo.png' w={56} />
+        <a target='_blank' href='https://www.facebook.com/profile.php?id=100004292283632'><Icons src='/Facebook_icon.png' w={50} /></a>
+        <a target='_blank' href='https://www.linkedin.com/in/fangyuan-john-zhou-101473229/'><Icons src='/LinkedIn_icon_circle.svg.png' w={50} /></a>
+        <a target='_blank' href='https://twitter.com/johnzhou97'><Icons src='/Twitter-logo.png' w={56} /></a>
       </div>
       <MidCont>
         <InputCont>
