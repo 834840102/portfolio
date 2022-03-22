@@ -138,7 +138,7 @@ export default function Home() {
           <Text color={textcolor[theme]}>I am a web/mobile developer.</Text>
         </RigitCont>
       </Intro>
-      <HeaderTxt color={textcolor[theme]}>Project</HeaderTxt>
+      <HeaderTxt color={textcolor[theme]}>Projects</HeaderTxt>
       <Line background={textcolor[theme]}></Line>
       <Categories>
             <Item>
